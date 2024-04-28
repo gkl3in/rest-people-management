@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import br.com.restpeoplemanagement.mapper.ModelMapperGeneric;
 import br.com.restpeoplemanagement.model.Person;
 import br.com.restpeoplemanagement.unittests.mapper.mocks.MockPerson;
-import br.com.restpeoplemanagement.v1.PersonVO;
+import br.com.restpeoplemanagement.vo.PersonVO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

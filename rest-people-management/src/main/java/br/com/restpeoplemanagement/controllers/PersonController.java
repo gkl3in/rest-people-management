@@ -1,7 +1,7 @@
 package br.com.restpeoplemanagement.controllers;
 
 import br.com.restpeoplemanagement.services.PersonServices;
-import br.com.restpeoplemanagement.v1.PersonVO;
+import br.com.restpeoplemanagement.vo.PersonVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

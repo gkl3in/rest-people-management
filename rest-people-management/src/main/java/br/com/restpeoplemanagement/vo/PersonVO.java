@@ -1,6 +1,4 @@
-package br.com.restpeoplemanagement.v1;
-
-import jakarta.persistence.*;
+package br.com.restpeoplemanagement.vo;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,6 +17,13 @@ public class PersonVO implements Serializable {
 
 
     public PersonVO() {}
+
+    public PersonVO(Long id, String fullName, Date birthDate, List<Long> addresses) {
+        this.id = id;
+        this.fullName = fullName;
+        this.birthDate = birthDate;
+        this.addresses = addresses;
+    }
 
     public Long getId() {
         return id;

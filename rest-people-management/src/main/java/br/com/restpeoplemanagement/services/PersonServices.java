@@ -4,7 +4,7 @@ import br.com.restpeoplemanagement.exceptions.ResourceNotFoundException;
 import br.com.restpeoplemanagement.mapper.ModelMapperGeneric;
 import br.com.restpeoplemanagement.model.Person;
 import br.com.restpeoplemanagement.repositories.PersonRepository;
-import br.com.restpeoplemanagement.v1.PersonVO;
+import br.com.restpeoplemanagement.vo.PersonVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

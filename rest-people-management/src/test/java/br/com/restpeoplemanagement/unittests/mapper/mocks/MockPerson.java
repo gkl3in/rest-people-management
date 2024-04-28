@@ -1,7 +1,7 @@
 package br.com.restpeoplemanagement.unittests.mapper.mocks;
 
 import br.com.restpeoplemanagement.model.Person;
-import br.com.restpeoplemanagement.v1.PersonVO;
+import br.com.restpeoplemanagement.vo.PersonVO;
 
 import java.util.ArrayList;
 import java.util.Date;
