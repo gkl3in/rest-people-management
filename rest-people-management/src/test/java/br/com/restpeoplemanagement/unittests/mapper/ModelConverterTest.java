@@ -3,12 +3,14 @@ package br.com.restpeoplemanagement.unittests.mapper;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import br.com.restpeoplemanagement.mapper.ModelMapperGeneric;
+import br.com.restpeoplemanagement.model.Addresses;
 import br.com.restpeoplemanagement.model.Person;
 import br.com.restpeoplemanagement.unittests.mapper.mocks.MockPerson;
 import br.com.restpeoplemanagement.vo.PersonVO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,11 +18,23 @@ import java.util.List;
 public class ModelConverterTest {
 
     MockPerson inputObject;
-    List<Long> expectedAddresses = List.of(1L, 2L, 3L);
+    List<Addresses> expectedAddresses = new ArrayList<Addresses>();
 
     @BeforeEach
     public void setUp() {
         inputObject = new MockPerson();
+    }
+
+    private Addresses createAddress(Long id, String cep, String publicPlace, String numberPhone, String city, String state, Long personId) {
+        Addresses address = new Addresses();
+        address.setId(id);
+        address.setCep(cep);
+        address.setPublicPlace(publicPlace);
+        address.setNumberPhone(numberPhone);
+        address.setCity(city);
+        address.setState(state);
+        address.setPersonId(personId);
+        return address;
     }
 
     @Test

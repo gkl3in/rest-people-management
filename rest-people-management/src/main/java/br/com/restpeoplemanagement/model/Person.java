@@ -25,7 +25,7 @@ public class Person implements Serializable {
     private Date birthDate;
 
     @Transient
-    private List<Long> addresses; //alterar dps p receber o addresses no long
+    private List<Addresses> addresses; //alterar dps p receber o addresses no long
 
 
 
@@ -55,11 +55,11 @@ public class Person implements Serializable {
         this.birthDate = birthDate;
     }
 
-    public List<Long> getAddresses() {
+    public List<Addresses> getAddresses() {
         return addresses;
     }
 
-    public void setAddresses(List<Long> addresses) {
+    public void setAddresses(List<Addresses> addresses) {
         this.addresses = addresses;
     }
 

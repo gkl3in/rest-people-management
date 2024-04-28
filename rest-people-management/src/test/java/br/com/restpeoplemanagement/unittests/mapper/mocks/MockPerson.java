@@ -1,5 +1,6 @@
 package br.com.restpeoplemanagement.unittests.mapper.mocks;
 
+import br.com.restpeoplemanagement.model.Addresses;
 import br.com.restpeoplemanagement.model.Person;
 import br.com.restpeoplemanagement.vo.PersonVO;
 
@@ -36,21 +37,37 @@ public class MockPerson {
     }
     
     public Person mockEntity(Integer number) {
+        List<Addresses> addresses = new ArrayList<Addresses>();
+
         Person person = new Person();
         person.setId(Long.valueOf(number));
         person.setFullName("Gabriel Klein");
         person.setBirthDate(new Date(122, 0, 1));
-        person.setAddresses(List.of(1L, 2L, 3L));
+        person.setAddresses(addresses);
         return person;
     }
 
     public PersonVO mockVO(Integer number) {
+        List<Addresses> addresses = new ArrayList<Addresses>();
+
         PersonVO person = new PersonVO();
         person.setId(Long.valueOf(number));
         person.setFullName("Gabriel Klein");
         person.setBirthDate(new Date(122, 0, 1));
-        person.setAddresses(List.of(1L, 2L, 3L));
+        person.setAddresses(addresses);
         return person;
+    }
+
+    private Addresses createAddress(Long id, String cep, String publicPlace, String numberPhone, String city, String state, Long personId) {
+        Addresses address = new Addresses();
+        address.setId(id);
+        address.setCep(cep);
+        address.setPublicPlace(publicPlace);
+        address.setNumberPhone(numberPhone);
+        address.setCity(city);
+        address.setState(state);
+        address.setPersonId(personId);
+        return address;
     }
 
 }

@@ -1,6 +1,7 @@
 package br.com.restpeoplemanagement.unittests.person;
 
 import br.com.restpeoplemanagement.controllers.PersonController;
+import br.com.restpeoplemanagement.model.Addresses;
 import br.com.restpeoplemanagement.services.PersonServices;
 import br.com.restpeoplemanagement.vo.PersonVO;
 import org.junit.jupiter.api.BeforeEach;
@@ -39,8 +40,8 @@ public class PersonControllerTest {
     @Test
     public void testFindAll() throws Exception {
         List<PersonVO> personList = new ArrayList<>();
-        personList.add(new PersonVO(1L, "John Doe", new Date(), new ArrayList<Long>()));
-        personList.add(new PersonVO(2L, "Jane Doe", new Date(), new ArrayList<Long>()));
+        personList.add(new PersonVO(1L, "John Doe", new Date(), new ArrayList<Addresses>()));
+        personList.add(new PersonVO(2L, "Jane Doe", new Date(), new ArrayList<Addresses>()));
 
         when(personService.findAll()).thenReturn(personList);
 
@@ -53,7 +54,7 @@ public class PersonControllerTest {
 
     @Test
     public void testFindById() throws Exception {
-        PersonVO person = new PersonVO(1L, "John Doe", new Date(), new ArrayList<Long>());
+        PersonVO person = new PersonVO(1L, "John Doe", new Date(), new ArrayList<Addresses>());
         when(personService.findById(1L)).thenReturn(person);
 
         mockMvc.perform(get("/person/1"))
@@ -63,8 +64,7 @@ public class PersonControllerTest {
 
     @Test
     public void testCreate() throws Exception {
-        // Mock the service response
-        PersonVO person = new PersonVO(1L, "John Doe", new Date(), new ArrayList<Long>());
+        PersonVO person = new PersonVO(1L, "John Doe", new Date(), new ArrayList<Addresses>());
         when(personService.create(any(PersonVO.class))).thenReturn(person);
 
         String jsonRequest = "{\"fullName\": \"John Doe\", \"birthDate\": \"1990-01-01\", \"addresses\": []}";
@@ -78,8 +78,7 @@ public class PersonControllerTest {
 
     @Test
     public void testUpdate() throws Exception {
-        // Mock the service response
-        PersonVO person = new PersonVO(1L, "Updated Name", new Date(), new ArrayList<Long>());
+        PersonVO person = new PersonVO(1L, "Updated Name", new Date(), new ArrayList<Addresses>());
         when(personService.update(any(PersonVO.class))).thenReturn(person);
 
         String jsonRequest = "{\"id\": 1, \"fullName\": \"Updated Name\", \"birthDate\": \"1990-01-01\", \"addresses\": []}";

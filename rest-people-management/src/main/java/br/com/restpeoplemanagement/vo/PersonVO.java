@@ -1,5 +1,7 @@
 package br.com.restpeoplemanagement.vo;
 
+import br.com.restpeoplemanagement.model.Addresses;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -13,12 +15,12 @@ public class PersonVO implements Serializable {
     private Long id;
     private String fullName;
     private Date birthDate;
-    private List<Long> addresses;
+    private List<Addresses> addresses;
 
 
     public PersonVO() {}
 
-    public PersonVO(Long id, String fullName, Date birthDate, List<Long> addresses) {
+    public PersonVO(Long id, String fullName, Date birthDate, List<Addresses> addresses) {
         this.id = id;
         this.fullName = fullName;
         this.birthDate = birthDate;
@@ -49,11 +51,11 @@ public class PersonVO implements Serializable {
         this.birthDate = birthDate;
     }
 
-    public List<Long> getAddresses() {
+    public List<Addresses> getAddresses() {
         return addresses;
     }
 
-    public void setAddresses(List<Long> addresses) {
+    public void setAddresses(List<Addresses> addresses) {
         this.addresses = addresses;
     }
 
