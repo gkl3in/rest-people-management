@@ -52,7 +52,7 @@ public class AddressesServices {
         return vo;
     }
 
-    public AddressesVO update(AddressesVO address) {
+    public AddressesVO update(AddressesVO address) throws ResourceNotFoundException {
 
         logger.info("Updating one address!");
 

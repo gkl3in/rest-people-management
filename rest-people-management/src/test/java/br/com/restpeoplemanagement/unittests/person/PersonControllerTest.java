@@ -1,13 +1,16 @@
 package br.com.restpeoplemanagement.unittests.person;
 
 import br.com.restpeoplemanagement.controllers.PersonController;
+import br.com.restpeoplemanagement.exceptions.ResourceNotFoundException;
 import br.com.restpeoplemanagement.model.Addresses;
 import br.com.restpeoplemanagement.services.PersonServices;
+import br.com.restpeoplemanagement.vo.AddressesVO;
 import br.com.restpeoplemanagement.vo.PersonVO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -17,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -77,7 +81,7 @@ public class PersonControllerTest {
     }
 
     @Test
-    public void testUpdate() throws Exception {
+    public void testUpdateSuccessful() throws Exception {
         PersonVO person = new PersonVO(1L, "Updated Name", new Date(), new ArrayList<Addresses>());
         when(personService.update(any(PersonVO.class))).thenReturn(person);
 
@@ -88,6 +92,15 @@ public class PersonControllerTest {
                         .content(jsonRequest))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.fullName").value("Updated Name"));
+    }
+
+    @Test
+    public void testUpdateWhenNoRecordsFound() throws Exception {
+        when(personService.update(Mockito.any())).thenThrow(new ResourceNotFoundException("No records found for this ID!"));
+
+        assertThrows(ResourceNotFoundException.class, () -> {
+            personController.update(new PersonVO(1L, "Updated Name", new Date(), new ArrayList<Addresses>()));
+        }, "Expected update() in controller to throw ResourceNotFoundException, but it didn't");
     }
 
     @Test
