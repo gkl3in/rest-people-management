@@ -49,7 +49,7 @@ public class PersonServices {
     }
 
 
-    public PersonVO findById(Long id) {
+    public PersonVO findById(Long id) throws ResourceNotFoundException {
         logger.info("Finding one person!");
         var entityPerson = repository.findPersonDetailsById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
@@ -74,7 +74,7 @@ public class PersonServices {
         return vo;
     }
 
-    public PersonVO update(PersonVO person) {
+    public PersonVO update(PersonVO person) throws ResourceNotFoundException {
 
         logger.info("Updating one person!");
 
@@ -90,7 +90,7 @@ public class PersonServices {
         return vo;
     }
 
-    public void delete(Long id) {
+    public void delete(Long id) throws ResourceNotFoundException {
 
         logger.info("Deleting one person!");
 

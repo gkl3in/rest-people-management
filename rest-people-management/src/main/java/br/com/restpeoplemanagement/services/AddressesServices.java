@@ -26,7 +26,7 @@ public class AddressesServices {
     }
 
 
-    public AddressesVO findById(Long id) {
+    public AddressesVO findById(Long id) throws ResourceNotFoundException {
         logger.info("Finding one address!");
         var entityAddresses = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
@@ -71,7 +71,7 @@ public class AddressesServices {
         return vo;
     }
 
-    public void delete(Long id) {
+    public void delete(Long id) throws ResourceNotFoundException {
 
         logger.info("Deleting one address!");
 
